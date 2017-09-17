@@ -3,11 +3,16 @@ package goproxy
 import (
 	"net/http"
 	"regexp"
+	"time"
 )
 
 // ProxyCtx is the Proxy context, contains useful information about every request. It is passed to
 // every user function. Also used as a logger.
 type ProxyCtx struct {
+
+	// The start time for the request
+	StartTime time.Time
+
 	// Will contain the client request from the proxy
 	Req *http.Request
 	// Will contain the remote server's response (if available. nil if the request wasn't send yet)
